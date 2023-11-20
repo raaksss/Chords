@@ -2,18 +2,19 @@ import React from 'react';
 import '../styles/signup.css';
 
 const AuthSpot = () => {
-    const handleLoginClick = () => {
-        const client_id = '84fad8cd66834378b3336e18558015cf';
-        const redirect_uri = encodeURIComponent('http://localhost:3000/signup'); // Make sure it matches the registered URI
-        const url = 'https://accounts.spotify.com/authorize';
-        const params = new URLSearchParams({
-          response_type: 'token',
-          client_id,
-          redirect_uri,
-        });
-      
-        window.location.href = `${url}?${params.toString()}`;
-      };
+  const handleLoginClick = () => {
+    const client_id = '84fad8cd66834378b3336e18558015cf';
+    const redirect_uri = 'http://localhost:3000/signup';
+    const url = 'https://accounts.spotify.com/authorize';
+    const params = new URLSearchParams({
+        response_type: 'token',
+        client_id,
+        redirect_uri,
+    });
+
+    window.location.href = `${url}?${params.toString()}`;
+};
+
       
   return (
     <div id="content">

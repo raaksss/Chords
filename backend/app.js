@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, '../frontend/src')));
 app.use(cors());
 
 
-const PORT=5500;
+const PORT=5000;
 mongoose.connect("mongodb://127.0.0.1:27017/Chords",{ useNewUrlParser: true, useUnifiedTopology: true }).then(()=>{
     app.listen(PORT,()=>{
         console.log(`Server running on port ${PORT}`)
@@ -24,7 +24,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/Chords",{ useNewUrlParser: true, use
 
 
 
-app.post('/register', async (req, res) => {
+app.post('/signup', async (req, res) => {
     const { username, password } = req.body;
 
     if (!username || !password) {
@@ -47,6 +47,7 @@ app.post('/register', async (req, res) => {
         }
 }
 });
+
 app.post('/saveAccessToken', async (req, res) => {
     const { username, accessToken } = req.body;
     console.log('Received data:', username, accessToken); // Log the data for debugging

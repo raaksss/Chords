@@ -26,7 +26,7 @@ function Signup() {
       password,
     };
 
-    fetch('http://localhost:5500/register', {
+    fetch('http://localhost:5000/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -25,9 +25,9 @@ mongoose.connect("mongodb://127.0.0.1:27017/Chords",{ useNewUrlParser: true, use
 
 
 app.post('/signup', async (req, res) => {
-    const { username, password } = req.body;
+    const { username, password, spotifyAccessToken } = req.body;
 
-    if (!username || !password) {
+    if (!username || !password || !spotifyAccessToken) {
         res.status(400).send('Empty credentials');
         return;
     }
@@ -36,7 +36,7 @@ app.post('/signup', async (req, res) => {
     if (existingUser) {
         res.status(400).send('Username already in use');
     } else {
-        const newSign = new Sign({ username, password });
+        const newSign = new Sign({ username, password, spotifyAccessToken });
         try {
             await newSign.save();
             res.status(201).send('User registered successfully!');
@@ -46,20 +46,6 @@ app.post('/signup', async (req, res) => {
             res.status(500).send('Registration failed');
         }
 }
-});
-
-app.post('/saveAccessToken', async (req, res) => {
-    const { username, accessToken } = req.body;
-    console.log('Received data:', username, accessToken); // Log the data for debugging
-
-    try {
-        await Sign.updateOne({ username }, { spotifyAccessToken: accessToken });
-
-        res.status(200).send('Access token saved successfully');
-    } catch (error) {
-        console.error('Error saving access token:', error);
-        res.status(500).send('Internal server error');
-    }
 });
 
 

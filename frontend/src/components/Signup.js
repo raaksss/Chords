@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import '../styles/signup.css';
+import { useEffect } from 'react';
 
 function Signup() {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+
+const urlParams = new URLSearchParams(window.location.hash.substring(1));
+const spotifyAccessToken = urlParams.get('access_token');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,6 +28,8 @@ function Signup() {
     const userData = {
       username,
       password,
+      spotifyAccessToken,
+
     };
 
     fetch('http://localhost:5000/signup', {

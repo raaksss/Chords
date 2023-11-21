@@ -15,34 +15,7 @@ const Landing = () => {
       setIsOpen(!isOpen);
     });
 
-    const accessToken = localStorage.getItem('spotifyAccessToken', 'http://127.0.0.1:5500');
-    if (accessToken) {
-      fetchSpotifyProfile(accessToken);
-    } else {
-      console.log('Access Token not found in local storage.');
-    }
 
-    function fetchSpotifyProfile(accessToken) {
-      fetch('https://api.spotify.com/v1/me', {
-        headers: {
-          'Authorization': 'Bearer ' + accessToken,
-        },
-      })
-        .then(response => response.json())
-        .then(profile => {
-          updateProfileUI(profile);
-        })
-        .catch(error => {
-          console.error('Error fetching Spotify profile:', error);
-        });
-    }
-
-    function updateProfileUI(profile) {
-      document.getElementById('profile-image').src = profile.images[0].url;
-      document.getElementById('display-name').innerText = profile.display_name;
-      document.getElementById('user-id').innerText = 'User ID: ' + profile.id;
-      document.getElementById('email').innerText = 'Email: ' + profile.email;
-    }
   }, [isOpen]);
 
   return (

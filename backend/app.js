@@ -12,6 +12,27 @@ app.use(express.static(__dirname + '/../frontend/public'));
 app.use(express.static(path.join(__dirname, '../frontend/src')));
 app.use(cors());
 
+const validateSpotifyToken = async (req, res, next) => {
+    const { username } = req.body;
+    const user = await Sign.findOne({ username });
+
+    if (user && user.spotifyAccessToken) {
+        const accessToken = user.spotifyAccessToken;
+        const profile = await fetchProfile(accessToken);
+        console.log('Sending response:', { profile, accessToken });
+        res.status(200).json({ profile, accessToken });
+    } else {
+        res.status(401).send('Invalid Spotify access token');
+    }
+};
+
+  async function fetchProfile(token) {
+    const result = await fetch("https://api.spotify.com/v1/me", {
+        method: "GET", headers: { Authorization: `Bearer ${token}` }
+    });
+
+    return await result.json();
+}
 
 const PORT=5000;
 mongoose.connect("mongodb://127.0.0.1:27017/Chords",{ useNewUrlParser: true, useUnifiedTopology: true }).then(()=>{
@@ -22,6 +43,8 @@ mongoose.connect("mongodb://127.0.0.1:27017/Chords",{ useNewUrlParser: true, use
 .catch((err)=>console.log(err));
 
 
+
+app.post('/validateSpotifyToken', validateSpotifyToken);
 
 
 app.post('/signup', async (req, res) => {

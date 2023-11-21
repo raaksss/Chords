@@ -39,7 +39,7 @@ function Login() {
           alert('Password entered is incorrect.');
           return;
         } else {
-          navigate('/landing');
+          navigate('/landing', { state: { username } });
         }
       })
       .catch((error) => {

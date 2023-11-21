@@ -1,82 +1,103 @@
-import React from 'react'
-import '../styles/user.css';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
+import axios from 'axios';
+
 const User = () => {
+  const [profile, setProfile] = useState(null);
+  const [topArtists, setTopArtists] = useState([]);
+  const [topTracks, setTopTracks] = useState([]);
+  const [loading, setLoading] = useState(true); 
+
+  const location = useLocation();
+  const { username } = location.state;
+
+  useEffect(() => {
+    const abortController = new AbortController();
+    const fetchProfileData = async () => {
+      try {
+        const response = await axios.post(
+            'http://localhost:5000/validateSpotifyToken',
+            { username: username },
+            { signal: abortController.signal }
+          );
+        setProfile(response.data.profile);
+        const [topArtistsData, topTracksData] = await Promise.all([
+            fetchTopArtists(response.data.accessToken),
+            fetchTopTracks(response.data.accessToken),
+        ]);
+        setTopArtists(topArtistsData.items);
+        setTopTracks(topTracksData.items);
+        setLoading(false);
+        
+      } catch (error) {
+        if (error.name === 'AbortError') {
+          console.log('Request was aborted');
+        } else {
+          console.error('Error fetching profile data:', error);
+        }
+      }
+    };
+
+    fetchProfileData();
+  }, []);
+
+  async function fetchTopArtists(token) {
+    const result = await fetch('https://api.spotify.com/v1/me/top/artists', {
+      method: 'GET',
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    return await result.json();
+  }
+
+  async function fetchTopTracks(token) {
+    const result = await fetch('https://api.spotify.com/v1/me/top/tracks', {
+      method: 'GET',
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    return await result.json();
+  }
+
+  if (loading) {
+    return <p>Loading...</p>; 
+  }
+
   return (
-    <React.Fragment>
-        <Main>
-          <Header>
-            <Avatar>
-              {user.images.length > 0 ? (
-                <img src={user.images[0].url} alt="avatar" />
-              ) : (
-                <NoAvatar>
-                  <IconUser />
-                </NoAvatar>
-              )}
-            </Avatar>
-            <UserName href={user.external_urls.spotify} target="_blank" rel="noopener noreferrer">
-              <Name>{user.display_name}</Name>
-            </UserName>
-            <Stats>
-              <Stat>
-                <Number>{user.followers.total}</Number>
-                <NumLabel>Followers</NumLabel>
-              </Stat>
-              {followedArtists && (
-                <Stat>
-                  <Number>{followedArtists.artists.items.length}</Number>
-                  <NumLabel>Following</NumLabel>
-                </Stat>
-              )}
-              {totalPlaylists && (
-                <Stat>
-                  <Link to="playlists">
-                    <Number>{totalPlaylists}</Number>
-                    <NumLabel>Playlists</NumLabel>
-                  </Link>
-                </Stat>
-              )}
-            </Stats>
-            <LogoutButton onClick={logout}>Logout</LogoutButton>
-          </Header>
+    <div>
+      <h1>Display your Spotify profile data</h1>
+      <section id="profile">
+          <h2>Logged in as <span id="displayName">{profile.display_name}</span></h2>
+          {profile.images[1] && (
+            <span id="avatar">
+              <img src={profile.images[0].url} alt="Profile Avatar" />
+            </span>
+          )}
+            </section>
+      <section id="top-artists">
+        <h2>Top Artists of All Time</h2>
+        <ul>
+          {topArtists.map((artist, i) => (
+            <li key={i}>
+              {artist.name}
+            </li>
+          ))}
+        </ul>
+      </section>
 
-          <Preview>
-            <Tracklist>
-              <TracklistHeading>
-                <h3>Top Artists of All Time</h3>
-              </TracklistHeading>
-              <div>
-                  <ul>
-                    {topArtists.items.slice(0, 10).map((artist, i) => (
-                      <Artist key={i}>
-                        <ArtistArtwork to={`/artist/${artist.id}`}>
-                          {artist.images.length && <img src={artist.images[2].url} alt="Artist" />}
-                          <Mask>
-                            <IconInfo />
-                          </Mask>
-                        </ArtistArtwork>
-                        <ArtistName to={`/artist/${artist.id}`}>
-                          <span>{artist.name}</span>
-                        </ArtistName>
-                      </Artist>
-                    ))}
-                  </ul>
-              </div>
-            </Tracklist>
-            <Tracklist>
-              <TracklistHeading>
-                <h3>Top Tracks of All Time</h3>
-              </TracklistHeading>
-              <ul>
-                {
-                  topTracks.items.slice(0, 10).map((track, i) => <TrackItem track={track} key={i} />)
-                }
-              </ul>
-            </Tracklist>
-          </Preview>
-        </Main>
-    </React.Fragment>
-  )
-}
+      <section id="top-tracks">
+        <h2>Top Tracks of All Time</h2>
+        <ul>
+          {topTracks.map((track, i) => (
+            <li key={i}>
+              {track.name} by {track.artists.map((artist) => artist.name).join(', ')}
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
+  );
+};
 
-export default User
+export default User;

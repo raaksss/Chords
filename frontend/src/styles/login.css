@@ -1,6 +1,6 @@
 html, body {
     min-height: 100%;
-}
+  }
 
 body {
     background-color: rgb(46, 73, 103);
@@ -9,7 +9,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
   margin: 0;
 }
 

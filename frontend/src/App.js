@@ -5,6 +5,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import AuthSpot from './components/AuthSpot';
 import Landing from './components/Landing';
+import Insights from './components/Insights';
 
 function App() {
   return (
@@ -15,10 +16,11 @@ function App() {
         <Route path="/authsp" element={<AuthSpot/>} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/landing" element={<Landing />} />
+        <Route path="/insights" element={<Insights />} />
+
 
       </Routes>
     </Router>
   );
 }
-
 export default App;

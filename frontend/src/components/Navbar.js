@@ -26,12 +26,12 @@ const Navbar = () => {
       </button>
 
       <nav role="navigation" className="menu">
-        <a href="#" className="logotype">Cho<span>rds</span></a>
+        <a href="/landing" className="logotype">Cho<span>rds</span></a>
 
         <div className="overflow-container">
           <ul className="menu-dropdown">
-            <li><a href="#">Profile</a><span className="icon"><FontAwesomeIcon icon={faDashboard} /></span></li>
-            <li><a href="/messaging">Messages</a><span className="icon"><FontAwesomeIcon icon={faEnvelope} /></span></li>
+            <li><a href="/insights">Insights</a><span className="icon"><FontAwesomeIcon icon={faDashboard} /></span></li>
+            <li><a href="http://localhost:3000/login">Messages</a><span className="icon"><FontAwesomeIcon icon={faEnvelope} /></span></li>
             <li><a href="#">Matches</a><span className="icon"><FontAwesomeIcon icon={faHeart} /></span></li>
             <li className="menu-hasdropdown">
               <a href="#">Settings</a><span className="icon"><FontAwesomeIcon icon={faGear} /></span>

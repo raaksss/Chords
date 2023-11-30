@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import '../styles/insights.css';
+import { useLocation } from 'react-router-dom';
+
 
 const ColorSection = ({ gradient, children, emoji, align }) => (
   <div style={{ background: gradient, padding: '200px', textAlign: align, position: 'relative', color: 'white', marginTop: '0', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
@@ -8,7 +10,8 @@ const ColorSection = ({ gradient, children, emoji, align }) => (
   </div>
 );
 
-function App() {
+function Insights() {
+ 
   useEffect(() => {
     const emojiContainers = document.querySelectorAll('.emoji-container');
 

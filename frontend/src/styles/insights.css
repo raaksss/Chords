@@ -1,0 +1,14 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+  
+  #root {
+    height: 100vh;
+  }
+  
+  @keyframes emoji-flow {
+    to {
+      left: 100%;
+    }
+  }

@@ -3,18 +3,17 @@ import '../styles/signup.css';
 
 const AuthSpot = () => {
   const handleLoginClick = () => {
-    const client_id = '84fad8cd66834378b3336e18558015cf';
+    const client_id = '8f60010d6bb34cd8a962ffe17d865fa1';
     const redirect_uri = 'http://localhost:3000/signup';
     const url = 'https://accounts.spotify.com/authorize';
 
-    // Specify the scopes your application needs
     const scopes = 'user-read-private user-read-email user-library-read user-top-read';
 
     const params = new URLSearchParams({
         response_type: 'token',
         client_id,
         redirect_uri,
-        scope: scopes,  // Add the scope parameter here
+        scope: scopes,  
     });
 
     window.location.href = `${url}?${params.toString()}`;

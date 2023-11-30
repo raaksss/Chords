@@ -13,14 +13,14 @@ const User = () => {
   const { username } = location.state;
 
   useEffect(() => {
-    const abortController = new AbortController();
     const fetchProfileData = async () => {
       try {
         const response = await axios.post(
             'http://localhost:5000/validateSpotifyToken',
             { username: username },
-            { signal: abortController.signal }
           );
+          console.log(response.data.profile)
+
         setProfile(response.data.profile);
         const [topArtistsData, topTracksData] = await Promise.all([
             fetchTopArtists(response.data.accessToken),
@@ -31,12 +31,8 @@ const User = () => {
         setLoading(false);
         
       } catch (error) {
-        if (error.name === 'AbortError') {
-          console.log('Request was aborted');
-        } else {
-          console.error('Error fetching profile data:', error);
-        }
-      }
+  console.error('Error:', error.response.data); // Log the error response from the server
+}
     };
 
     fetchProfileData();

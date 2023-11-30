@@ -12,27 +12,58 @@ app.use(express.static(__dirname + '/../frontend/public'));
 app.use(express.static(path.join(__dirname, '../frontend/src')));
 app.use(cors());
 
-const validateSpotifyToken = async (req, res, next) => {
-    const { username } = req.body;
-    const user = await Sign.findOne({ username });
+async function fetchProfile(token) {
+    try {
+        const result = await fetch("https://api.spotify.com/v1/me", {
+    method: "GET",
+    headers: { Authorization: `Bearer ${token}` }
+});
 
-    if (user && user.spotifyAccessToken) {
-        const accessToken = user.spotifyAccessToken;
-        const profile = await fetchProfile(accessToken);
-        console.log('Sending response:', { profile, accessToken });
-        res.status(200).json({ profile, accessToken });
-    } else {
-        res.status(401).send('Invalid Spotify access token');
+if (!result.ok) {
+    const errorText = await result.text();
+    console.error('Error Response Body:', errorText);
+
+    // Check if the response is valid JSON
+    try {
+        JSON.parse(errorText);
+    } catch (jsonError) {
+        console.error('JSON Parsing Error:', jsonError);
+    }
+
+    throw new Error(`Failed to fetch profile. Status: ${result.status}`);
+}
+
+        return await result.json();
+    } catch (error) {
+        console.error('Error fetching Spotify profile:', error.message);
+        throw error; // Propagate the error to the calling function
+    }
+}
+
+const validateSpotifyToken = async (req, res) => {
+    const { username } = req.body;
+    try {
+        const user = await Sign.findOne({ username });
+
+        if (user && user.spotifyAccessToken) {
+            const accessToken = user.spotifyAccessToken;
+            const profile = await fetchProfile(accessToken);
+            console.log('Sending response:', { profile, accessToken });
+            res.status(200).json({ profile, accessToken });
+        } else {
+            res.status(401).send('Invalid Spotify access token');
+        }
+    } catch (error) {
+        console.error('Error during token validation:', error);
+
+        // Handle different error scenarios
+        if (error.name === 'SyntaxError') {
+            res.status(500).send('Error parsing Spotify API response');
+        } else {
+            res.status(500).send('Error during token validation');
+        }
     }
 };
-
-  async function fetchProfile(token) {
-    const result = await fetch("https://api.spotify.com/v1/me", {
-        method: "GET", headers: { Authorization: `Bearer ${token}` }
-    });
-
-    return await result.json();
-}
 
 const PORT=5000;
 mongoose.connect("mongodb://127.0.0.1:27017/Chords",{ useNewUrlParser: true, useUnifiedTopology: true }).then(()=>{
@@ -41,7 +72,6 @@ mongoose.connect("mongodb://127.0.0.1:27017/Chords",{ useNewUrlParser: true, use
     })
 })
 .catch((err)=>console.log(err));
-
 
 
 app.post('/validateSpotifyToken', validateSpotifyToken);

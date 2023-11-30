@@ -31,7 +31,7 @@ const Navbar = () => {
         <div className="overflow-container">
           <ul className="menu-dropdown">
             <li><a href="#">Profile</a><span className="icon"><FontAwesomeIcon icon={faDashboard} /></span></li>
-            <li><a href="#">Messages</a><span className="icon"><FontAwesomeIcon icon={faEnvelope} /></span></li>
+            <li><a href="/messaging">Messages</a><span className="icon"><FontAwesomeIcon icon={faEnvelope} /></span></li>
             <li><a href="#">Matches</a><span className="icon"><FontAwesomeIcon icon={faHeart} /></span></li>
             <li className="menu-hasdropdown">
               <a href="#">Settings</a><span className="icon"><FontAwesomeIcon icon={faGear} /></span>

@@ -3,8 +3,7 @@ html, body {
   }
 
 body {
-    background-color: rgb(46, 73, 103);
-    background-image: linear-gradient(rgb(43, 78, 110), rgb(4, 11, 5) 85%);
+ 
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   display: flex;
   align-items: center;
@@ -30,6 +29,8 @@ h3 {
 }
 
 #content {
+    background-color: rgb(46, 73, 103);
+    background-image: linear-gradient(rgb(43, 78, 110), rgb(4, 11, 5) 85%);
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;

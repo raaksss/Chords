@@ -3,6 +3,7 @@ import '../styles/landing.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDashboard, faEnvelope, faHeart, faGear, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import { Link } from 'react-router-dom';
 
 const Navbar = ({ username }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -26,12 +27,12 @@ const Navbar = ({ username }) => {
       </button>
 
       <nav role="navigation" className="menu">
-        <a href="/landing" className="logotype">Cho<span>rds</span></a>
+      <Link to="/landing" className="logotype">Cho<span>rds</span></Link>
 
         <div className="overflow-container">
           <ul className="menu-dropdown">
             <li><a href="/insights">Insights</a><span className="icon"><FontAwesomeIcon icon={faDashboard} /></span></li>
-            <li><a href="http://localhost:3000/login">Messages</a><span className="icon"><FontAwesomeIcon icon={faEnvelope} /></span></li>
+            <li><a href="/messages">Messages</a><span className="icon"><FontAwesomeIcon icon={faEnvelope} /></span></li>
             <li><a href="#">Matches</a><span className="icon"><FontAwesomeIcon icon={faHeart} /></span></li>
             <li className="menu-hasdropdown">
               <a href="#">Settings</a><span className="icon"><FontAwesomeIcon icon={faGear} /></span>

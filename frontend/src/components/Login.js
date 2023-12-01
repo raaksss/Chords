@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate,Link } from 'react-router-dom';
-import '../styles/login.css'
-
+import { useNavigate, Link } from 'react-router-dom';
+import '../styles/login.css';
 
 function Login() {
-
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +36,10 @@ function Login() {
           alert('Password entered is incorrect.');
           return;
         } else {
-          navigate('/landing', { state: { username } });
+          // Save username to local storage
+          localStorage.setItem('username', username);
+
+          navigate('/landing');
         }
       })
       .catch((error) => {

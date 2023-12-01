@@ -48,7 +48,7 @@ function Insights() {
         </div>
 
         <div style={{ fontSize: '1.5em' }}>
-          <p> Tracks with a high happiness score sound more positive (e.g. happy, cheerful),<br></br>
+          <p> Tracks with a high happiness score sound more positive (e.g. happy, cheerful),
           while tracks with a low score sound more negative (e.g. sad, angry). </p>
         </div>
       </ColorSection>
@@ -59,7 +59,7 @@ function Insights() {
         </div>
         <br></br>
         <div style={{ fontSize: '1.5em' }}>
-          <p>The danceability of tracks is judged by musical elements such as tempo,<br></br>
+          <p>The danceability of tracks is judged by musical elements such as tempo,
           rhythm stability, and beat strength to give a score on how well you could groove to it.</p>
         </div>
       </ColorSection>
@@ -71,7 +71,7 @@ function Insights() {
         </div>
         <br></br>
         <div style={{ fontSize: '1.5em' }}>
-        <p>Energetic tracks feel fast, loud and noisy. For example, heavy metal has <br></br>
+        <p>Energetic tracks feel fast, loud and noisy. For example, heavy metal has
         high energy while lo-fi hip pop might not.</p>
         </div>
       </ColorSection>
@@ -83,7 +83,7 @@ function Insights() {
         </div>
         <br></br>
         <div style={{ fontSize: '1.5em' }}>
-        <p>Tracks with a higher acousticness score have more acoustic<br></br>
+        <p>Tracks with a higher acousticness score have more acoustic
         elements compared to electronic.</p>
         </div>
       </ColorSection>

@@ -8,6 +8,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(227, 224, 226);
+  height:100%
 }
 
 code {
@@ -158,8 +159,9 @@ p {
 
 .top-tracks-section li {
   font-size: 35px;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   margin-left: 45px;
   font-family: Montserrat, sans-serif;
+  
 }
 

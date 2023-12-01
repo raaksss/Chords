@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDashboard, faEnvelope, faHeart, faGear, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 
-const Navbar = () => {
+const Navbar = ({ username }) => {
     const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {

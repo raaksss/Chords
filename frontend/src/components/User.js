@@ -10,7 +10,7 @@ const User = () => {
   const [loading, setLoading] = useState(true); 
 
   const location = useLocation();
-  const { username } = location.state;
+  const { username } = location.state || {};
 
   useEffect(() => {
     const fetchProfileData = async () => {

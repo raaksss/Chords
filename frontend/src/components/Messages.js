@@ -11,11 +11,10 @@ const Messages = () => {
         <SendbirdApp
                 appId='334E409D-0888-4D89-91C9-A3D967DAC5C7' 
                 userId={username} 
-                nickname={name} 
+                nickname={username} 
                 theme="dark"   
             />
     </div>
   )
 }
-
 export default Messages

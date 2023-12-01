@@ -6,7 +6,7 @@ import Signup from './components/Signup';
 import AuthSpot from './components/AuthSpot';
 import Landing from './components/Landing';
 import SupInsight from './components/SupInsight';
-import Messages from './components/Messages';
+import SupMessages from './components/SupMessages';
 
 function App() {
   return (
@@ -18,9 +18,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/landing" element={<Landing />} />
         <Route path="/insights" element={<SupInsight />} />
-        <Route path="/messages" element={<Messages />} />
-
-
+        <Route path="/messages" element={<SupMessages />} />
       </Routes>
     </Router>
   );

@@ -1,7 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+<<<<<<< HEAD
 const User = ({ username }) => {
+=======
+// Import your circular image
+import circularImage from './test.png';
+
+// Import artist images
+import artistImage1 from './test.png';
+import artistImage2 from './test.png';
+import artistImage3 from './test.png';
+import artistImage4 from './test.png';
+import artistImage5 from './test.png';
+
+const User = () => {
+>>>>>>> 5f29b7a487a8633e6112d19891f2ecdf0f346a51
   const [profile, setProfile] = useState(null);
   const [topArtists, setTopArtists] = useState([]);
   const [topTracks, setTopTracks] = useState([]);
@@ -57,6 +71,7 @@ const User = ({ username }) => {
   }
 
   return (
+<<<<<<< HEAD
     <div>
       <h1>Display your Spotify profile data</h1>
       <section id="profile">
@@ -77,17 +92,133 @@ const User = ({ username }) => {
           ))}
         </ul>
       </section>
+=======
+    <div className="cream-colored-page">
+      <div className="top-section">
+        <div className="content-wrapper">
+          <img className="circular-image" src={circularImage} alt="Circular" />
+          <div className="text-content">
+            <h1>
+              Hey! check out your stats & <br /> insights below.
+            </h1>
+          </div>
+        </div>
+      </div>
+>>>>>>> 5f29b7a487a8633e6112d19891f2ecdf0f346a51
 
-      <section id="top-tracks">
-        <h2>Top Tracks of All Time</h2>
+      <div className="top-artists-section">
+        <div className="content-wrapper">
+          <div className="text-content" style={{ textAlign: 'left' }}>
+            <div className="artist1-info">
+              <div className="artist-details">
+                <h2>
+                  <span style={{ color: 'rgb(253, 212, 206)' }}>Grooving to </span>
+                  <br />
+                  <span style={{ color: 'rgb(231, 42, 22)' }}>JUICE WRLD</span>
+                </h2>
+                <p>
+                  <span style={{ color: 'rgb(236, 240, 241)' }}>
+                    When it comes to your favorite artist at the<br />
+                    moment, no one does it quite like JUICE WRLD!
+                  </span>
+                </p>
+              </div>
+              <img
+                className="artist-image"
+                src={artistImage1}
+                alt="JUICE WRLD"
+                style={{
+                  marginLeft: '50px',
+                  marginTop: '50px',
+                  width: '400px',
+                  height: '400px',
+                  borderRadius: '30px',
+                }}
+              />
+            </div>
+          </div>
+        </div>
+        <br />
+        <br />
+        <br/>
+        <br/>
+        <div className="artist-matrix">
+          <div className="artist-item">
+            <img className="artist-image" src={artistImage2} alt="Artist 1" />
+            <div className="artist-details">
+              <span style={{ color: 'rgb(231, 42, 22)' }}>#2</span>
+              <br />
+              <span style={{ color: 'rgb(253, 212, 206)' }}>Post Malone</span>
+            </div>
+          </div>
+          <div className="artist-item">
+            <img className="artist-image" src={artistImage3} alt="Artist 2" />
+            <div className="artist-details">
+              <span style={{ color: 'rgb(231, 42, 22)' }}>#3</span>
+              <br />
+              <span style={{ color: 'rgb(253, 212, 206)' }}>Drake</span>
+            </div>
+          </div>
+          <div className="artist-item">
+            <img className="artist-image" src={artistImage4} alt="Artist 3" />
+            <div className="artist-details">
+              <span style={{ color: 'rgb(231, 42, 22)' }}>#4</span>
+              <br />
+              <span style={{ color: 'rgb(253, 212, 206)' }}>Ed Sheeran</span>
+            </div>
+          </div>
+          <div className="artist-item">
+            <img className="artist-image" src={artistImage5} alt="Artist 4" />
+            <div className="artist-details">
+              <span style={{ color: 'rgb(231, 42, 22)' }}>#5</span>
+              <br />
+              <span style={{ color: 'rgb(253, 212, 206)' }}>Ariana Grande</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="top-tracks-section">
+        <h2>Tracks</h2>
+        <br/>
+        <p>
+        Here are your all-time top 10 tracks according to Spotify.
+        </p>
+        <br/>
+        <br/>
+        <br/>
         <ul>
-          {topTracks.map((track, i) => (
-            <li key={i}>
-              {track.name} by {track.artists.map((artist) => artist.name).join(', ')}
-            </li>
-          ))}
+          <li>
+          <span style={{ color: '#f5f5dc', fontWeight: 'bold', fontSize:'45px', marginRight: '31px'}}>#1</span> Track 1
+          </li>
+          <li>
+          <span style={{ color: '#f5f5dc', fontWeight: 'bold', fontSize:'45px', marginRight: '31px'}}>#2</span> Track 2
+          </li>
+          <li>
+          <span style={{ color: '#f5f5dc', fontWeight: 'bold', fontSize:'45px', marginRight: '31px'}}>#3</span> Track 3
+          </li>
+          <li>
+          <span style={{ color: '#f5f5dc', fontWeight: 'bold', fontSize:'45px', marginRight: '31px'}}>#4</span> Track 4
+          </li>
+          <li>
+          <span style={{ color: '#f5f5dc', fontWeight: 'bold', fontSize:'45px', marginRight: '31px'}}>#5</span> Track 5
+          </li>
+          <li>
+          <span style={{ color: '#f5f5dc', fontWeight: 'bold', fontSize:'45px', marginRight: '31px'}}>#6</span> Track 6
+          </li>
+          <li>
+          <span style={{ color: '#f5f5dc', fontWeight: 'bold', fontSize:'45px', marginRight: '31px'}}>#7</span> Track 7
+          </li>
+          <li>
+          <span style={{ color: '#f5f5dc', fontWeight: 'bold', fontSize:'45px', marginRight: '31px'}}>#8</span> Track 8
+          </li>
+          <li>
+          <span style={{ color: '#f5f5dc', fontWeight: 'bold', fontSize:'45px', marginRight: '31px'}}>#9</span> Track 9
+          </li>
+          <li>
+          <span style={{ color: '#f5f5dc', fontWeight: 'bold', fontSize:'45px', marginRight: '20px'}}>#10</span> Track 10
+          </li>
         </ul>
-      </section>
+      </div>
     </div>
   );
 };

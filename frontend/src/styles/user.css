@@ -1,3 +1,165 @@
-html, body {
-    min-height: 100%;
-  }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(227, 224, 226);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.cream-colored-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Align content at the top */
+  height: 100vh; /* 100% of the viewport height */
+}
+
+.top-section {
+  background-color: rgb(227, 224, 226); /* Different color for the top section */
+  padding: 100px;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circular-image {
+  width: 180px; /* Adjust the width as needed */
+  height: 180px; /* Adjust the height as needed */
+  border-radius: 50%; /* Creates a circular shape */
+  margin-right: 20px; /* Adjust the margin as needed */
+}
+
+.text-content {
+  color: #333; /* Text color */
+}
+
+h1 {
+  margin: 0; /* Remove default margin for better spacing */
+}
+
+.top-artists-section {
+  background-color: rgb(142, 28, 10);
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+h2 {
+  font-size: 70px;
+  margin-bottom: 10px;
+  margin-top: 50px;
+  margin-left: 20px;
+  font-family: Montserrat,sans-serif;
+}
+
+p {
+  font-size: 30px;
+  margin-bottom: 10px;
+  margin-top: 50px;
+  margin-left: 20px;
+  font-family: Montserrat,sans-serif;
+}
+
+.artist-matrix {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px; /* Adjust the gap between artist names */
+  justify-content: center; /* Center align the content horizontally */
+  align-items: center; /* Center align the content vertically */
+  font-size: 30px;
+  font-family: Montserrat,sans-serif;
+  margin-left: 85px;
+  font-weight: bold;
+}
+
+.artist-item {
+  display: flex; /* Use flexbox to arrange image and details horizontally */
+  align-items: center; /* Align content vertically in the flex container */
+  text-align: left; /* Align artist details text to the left */
+}
+
+.artist-item img.artist-image {
+  width: 280px; /* Adjust the image width as needed */
+  height: 280px; /* Adjust the image height as needed */
+  border-radius: 40px; /* Create a rounded corner square shape for the image */
+  margin-right: 30px; /* Add space between image and artist details */
+}
+
+.artist-name {
+  font-weight: bold; /* Make the artist name bold */
+}
+
+.artist-name {
+  font-weight: bold; /* Make the artist name bold */
+}
+
+.artist1-info {
+  display: flex;
+  align-items: center;
+}
+
+.artist-details {
+  text-align: left;
+}
+
+/* src/App.css */
+
+.top-tracks-section {
+  background: linear-gradient(20deg, rgb(218, 68, 83), rgb(137, 33, 107));
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  color: white; /* Set the text color to white or any other color that suits your design */
+  text-align: center; /* Center align text within the section */
+}
+
+.top-tracks-section h2 {
+  font-size: 70px;
+  margin-bottom: 10px;
+  font-family: Montserrat, sans-serif;
+}
+
+.top-tracks-section p {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-family: Montserrat, sans-serif;
+}
+
+.top-tracks-section h2,
+.top-tracks-section p {
+  margin: 0; /* Remove default margin for better spacing */
+}
+
+.top-tracks-section ul {
+  list-style-type: none; /* Remove default list styles */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+  text-align: left; /* Align the list items to the left */
+}
+
+.top-tracks-section li {
+  font-size: 35px;
+  margin-bottom: 50px;
+  margin-left: 45px;
+  font-family: Montserrat, sans-serif;
+}
+

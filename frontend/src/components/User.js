@@ -1,42 +1,38 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-
 import axios from 'axios';
 
-const User = () => {
+const User = ({ username }) => {
   const [profile, setProfile] = useState(null);
   const [topArtists, setTopArtists] = useState([]);
   const [topTracks, setTopTracks] = useState([]);
-  const [loading, setLoading] = useState(true); 
-
-  const location = useLocation();
-  const { username } = location.state || {};
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchProfileData = async () => {
+    const fetchData = async () => {
       try {
+        console.log(username)
         const response = await axios.post(
-            'http://localhost:5000/validateSpotifyToken',
-            { username: username },
-          );
-          console.log(response.data.profile)
+          'http://localhost:5000/validateSpotifyToken',
+          { username },
+        );
+        const { profile, accessToken } = response.data;
+        localStorage.setItem('name', profile.display_name);
 
-        setProfile(response.data.profile);
         const [topArtistsData, topTracksData] = await Promise.all([
-            fetchTopArtists(response.data.accessToken),
-            fetchTopTracks(response.data.accessToken),
+          fetchTopArtists(accessToken),
+          fetchTopTracks(accessToken),
         ]);
+
+        setProfile(profile);
         setTopArtists(topArtistsData.items);
         setTopTracks(topTracksData.items);
         setLoading(false);
-        
       } catch (error) {
-  console.error('Error:', error.response.data); // Log the error response from the server
-}
+        console.error('Error:', error.response.data);
+      }
     };
-
-    fetchProfileData();
-  }, []);
+    fetchData();
+  }, [username]);
 
   async function fetchTopArtists(token) {
     const result = await fetch('https://api.spotify.com/v1/me/top/artists', {
@@ -57,20 +53,20 @@ const User = () => {
   }
 
   if (loading) {
-    return <p>Loading...</p>; 
+    return <p>Loading...</p>;
   }
 
   return (
     <div>
       <h1>Display your Spotify profile data</h1>
       <section id="profile">
-          <h2>Logged in as <span id="displayName">{profile.display_name}</span></h2>
-          {profile.images[1] && (
-            <span id="avatar">
-              <img src={profile.images[0].url} alt="Profile Avatar" />
-            </span>
-          )}
-            </section>
+        <h2>Logged in as <span id="displayName">{profile.display_name}</span></h2>
+        {profile.images[1] && (
+          <span id="avatar">
+            <img src={profile.images[0].url} alt="Profile Avatar" />
+          </span>
+        )}
+      </section>
       <section id="top-artists">
         <h2>Top Artists of All Time</h2>
         <ul>

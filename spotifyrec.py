@@ -9,7 +9,7 @@ app=Flask(__name__)
 app.secret_key = '85c485a0-231f-5521-e950-2d4385558952'
 CLIENT_ID = 'c8f7899b69aa4f17a3ce3f0b60dd510b'
 CLIENT_SECRET = 'b736f62eca7742e9b7f246c5b4839119'
-REDIRECT_URI = 'http://localhost:5000/callback'
+REDIRECT_URI = 'http://localhost:7000/callback'
 AUTH_URL = 'https://accounts.spotify.com/authorize'
 TOKEN_URL = 'https://accounts.spotify.com/api/token'
 API_BASE_URL = 'https://api.spotify.com/v1/'
@@ -105,7 +105,7 @@ def get_track_names():
   header = {
       'Authorization':f"Bearer {session['access_token']}"
   }
-  response = requests.get(API_BASE_URL + 'me/top/tracks?limit=100',headers = header)
+  response = requests.get(API_BASE_URL + 'me/top/tracks?limit=50',headers = header)
   tracks = response.json()
   global list_track_names
   list_track_names=[]
@@ -127,7 +127,7 @@ def get_artist_names():
   header = {
       'Authorization':f"Bearer {session['access_token']}"
   }
-  response = requests.get(API_BASE_URL + 'me/top/artists?limit=100',headers = header)
+  response = requests.get(API_BASE_URL + 'me/top/artists?limit=50',headers = header)
   artists = response.json()
   global list_artist_names
   list_artist_names=[]
@@ -323,4 +323,4 @@ def refresh_token():
     return redirect('/tracks')
 
 if __name__ == '__main__':
-  app.run(host = '0.0.0.0',debug = True)
+  app.run(host = '0.0.0.0',debug = True, port = 7000)

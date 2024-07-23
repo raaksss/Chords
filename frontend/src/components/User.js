@@ -10,6 +10,14 @@ const User = ({ username }) => {
   const [topTracks, setTopTracks] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const [flask_retval, setFlaskVal] = useState(0);
+
+  useEffect(() => {
+    fetch('/testing').then(res => res.json()).then(data => {
+      setFlaskVal(data.a);
+    });
+  }, []);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -158,7 +166,7 @@ const User = ({ username }) => {
         <h2>Tracks</h2>
         <br/>
         <p>
-        Here are your all-time top 10 tracks according to Spotify.
+        Here are your all-time top 10 tracks according to Spotify. Also, {flask_retval}.
         </p>
         <br/>
         <br/>

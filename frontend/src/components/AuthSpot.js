@@ -3,7 +3,8 @@ import '../styles/signup.css';
 
 const AuthSpot = () => {
   const handleLoginClick = () => {
-    const client_id = '8f60010d6bb34cd8a962ffe17d865fa1';
+    // const client_id = '8f60010d6bb34cd8a962ffe17d865fa1';
+    const client_id = 'c8f7899b69aa4f17a3ce3f0b60dd510b';
     const redirect_uri = 'http://localhost:3000/signup';
     const url = 'https://accounts.spotify.com/authorize';
 

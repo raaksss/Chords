@@ -7,6 +7,7 @@ import AuthSpot from './components/AuthSpot';
 import Landing from './components/Landing';
 import SupInsight from './components/SupInsight';
 import SupMessages from './components/SupMessages';
+import SupMatches from './components/SupMatches';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/landing" element={<Landing />} />
         <Route path="/insights" element={<SupInsight />} />
         <Route path="/messages" element={<SupMessages />} />
+        <Route path="/matches" element={<SupMatches />} />
       </Routes>
     </Router>
   );

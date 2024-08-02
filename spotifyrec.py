@@ -6,10 +6,11 @@ from pymongo import MongoClient
 import math
 
 app=Flask(__name__)
-app.secret_key = '85c485a0-231f-5521-e950-2d4385558952'
-CLIENT_ID = 'c8f7899b69aa4f17a3ce3f0b60dd510b'
-CLIENT_SECRET = 'b736f62eca7742e9b7f246c5b4839119'
-REDIRECT_URI = 'http://localhost:7000/callback'
+# app.secret_key = 'YOUR_SECRET_KEY'
+# CLIENT_ID = 'YOUR_CLIENT_ID'
+# CLIENT_SECRET = 'YOUR_CLIENT_SECRET'
+
+REDIRECT_URI = 'http://localhost:8080/callback'
 AUTH_URL = 'https://accounts.spotify.com/authorize'
 TOKEN_URL = 'https://accounts.spotify.com/api/token'
 API_BASE_URL = 'https://api.spotify.com/v1/'
@@ -323,4 +324,4 @@ def refresh_token():
     return redirect('/tracks')
 
 if __name__ == '__main__':
-  app.run(host = '0.0.0.0',debug = True, port = 7000)
+  app.run(host = '0.0.0.0',debug = True, port = 8080)

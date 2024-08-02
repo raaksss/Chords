@@ -13,8 +13,8 @@ const User = ({ username }) => {
   const [flask_retval, setFlaskVal] = useState(0);
 
   useEffect(() => {
-    fetch('/testing').then(res => res.json()).then(data => {
-      setFlaskVal(data.a);
+    fetch('/match').then(res => res.json()).then(data => {
+      setFlaskVal(data);
     });
   }, []);
 
@@ -166,7 +166,7 @@ const User = ({ username }) => {
         <h2>Tracks</h2>
         <br/>
         <p>
-        Here are your all-time top 10 tracks according to Spotify. Also, {flask_retval}.
+        Here are your all-time top 10 tracks according to Spotify. Also, match score = {flask_retval}.
         </p>
         <br/>
         <br/>

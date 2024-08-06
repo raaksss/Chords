@@ -4,8 +4,8 @@ import '../styles/signup.css';
 const AuthSpot = () => {
   const handleLoginClick = () => {
     const client_id = process.env.REACT_APP_CLIENT_ID;
-    console.log("DONE");
-    console.log(client_id);
+    // console.log("DONE");
+    // console.log(client_id);
     const redirect_uri = 'http://localhost:3000/signup';
     const url = 'https://accounts.spotify.com/authorize';
 

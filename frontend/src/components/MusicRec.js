@@ -10,12 +10,12 @@ const ColorSection = ({ gradient, children, emoji, align }) => (
   </div>
 );
 
-function Matches() {
+function MusicRec() {
   
   const [flask_retval, setFlaskVal] = useState(0);
 
   useEffect(() => {
-      fetch('/match').then(res => res.json()).then(data => {
+      fetch('/rec').then(res => res.json()).then(data => {
         setFlaskVal(data);
       });
     }, []);
@@ -52,11 +52,15 @@ function Matches() {
       <ColorSection gradient="linear-gradient(to right, #fc83c8, #ff7a8a)" emoji="💕" align="left">
 
         <div style={{ fontSize: '1.5em' }}>
-          <p> Your match score is {flask_retval} </p>
+            <p>Here are your Recommended Songs:</p>
+            {flask_retval.map((song, index) => (
+                <p key={index}>{song}</p>
+            ))}
         </div>
+
       </ColorSection>
     </div>
   );
 }
-export default Matches;
+export default MusicRec;
 

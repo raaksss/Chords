@@ -34,7 +34,7 @@ const Navbar = ({ username }) => {
             <li><a href="/insights">Insights</a><span className="icon"><FontAwesomeIcon icon={faDashboard} /></span></li>
             <li><a href="/messages">Messages</a><span className="icon"><FontAwesomeIcon icon={faEnvelope} /></span></li>
             <li><a href="/matches">Matches</a><span className="icon"><FontAwesomeIcon icon={faHeart} /></span></li>
-            <li><a href="#">Music Recommender</a><span className="icon"><FontAwesomeIcon icon={faMusic} /></span></li>
+            <li><a href="/musicrec">Music Recommender</a><span className="icon"><FontAwesomeIcon icon={faMusic} /></span></li>
             <li className="menu-hasdropdown">
               <a href="#">Settings</a><span className="icon"><FontAwesomeIcon icon={faGear} /></span>
               <label title="toggle menu" htmlFor="settings">

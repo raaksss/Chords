@@ -8,8 +8,13 @@ import Landing from './components/Landing';
 import SupInsight from './components/SupInsight';
 import SupMessages from './components/SupMessages';
 import SupMatches from './components/SupMatches';
+import SupMusicRec from './components/SupMusicRec';
 
 function App() {
+
+  // const client_id = process.env.REACT_APP_CLIENT_ID;
+  // console.log(client_id);
+
   return (
     <Router>
       <Routes>
@@ -21,6 +26,7 @@ function App() {
         <Route path="/insights" element={<SupInsight />} />
         <Route path="/messages" element={<SupMessages />} />
         <Route path="/matches" element={<SupMatches />} />
+        <Route path="/musicrec" element={<SupMusicRec />} />
       </Routes>
     </Router>
   );

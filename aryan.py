@@ -3,9 +3,10 @@ from flask import Flask,redirect,request,jsonify,session
 from datetime import datetime,timedelta
 import urllib.parse
 app=Flask(_name_)
-app.secret_key = '85c485a0-231f-5521-e950-2d4385558952'
-CLIENT_ID = 'c8f7899b69aa4f17a3ce3f0b60dd510b'
-CLIENT_SECRET = 'b736f62eca7742e9b7f246c5b4839119'
+# app.secret_key = 'YOUR_SECRET_KEY'
+# CLIENT_ID = 'YOUR_CLIENT_ID'
+# CLIENT_SECRET = 'YOUR_CLIENT_SECRET'
+
 REDIRECT_URI = 'http://localhost:5000/callback'
 AUTH_URL = 'https://accounts.spotify.com/authorize'
 TOKEN_URL = 'https://accounts.spotify.com/api/token'

@@ -1,4 +1,6 @@
 import requests
+import os
+from dotenv import load_dotenv, dotenv_values
 from flask import Flask,redirect,request,jsonify,session
 from datetime import datetime,timedelta
 import urllib.parse
@@ -6,9 +8,12 @@ from pymongo import MongoClient
 import math
 
 app=Flask(__name__)
-# app.secret_key = 'YOUR_SECRET_KEY'
-# CLIENT_ID = 'YOUR_CLIENT_ID'
-# CLIENT_SECRET = 'YOUR_CLIENT_SECRET'
+
+load_dotenv()
+
+app.secret_key = os.getenv('SECRET_KEY')
+CLIENT_ID = os.getenv('YOUR_CLIENT_ID')
+CLIENT_SECRET = os.getenv('YOUR_CLIENT_SECRET')
 
 REDIRECT_URI = 'http://localhost:8080/callback'
 AUTH_URL = 'https://accounts.spotify.com/authorize'
